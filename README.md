@@ -1,6 +1,46 @@
 # dev-docs
 
-##### vscode  git  clone 过程
+###  环境信息
+
+***
+- 开发工具　：VS code
+- 前端框架：  angular5
+- 版本管理：git
+- 系统平台：Window7  64Bit
+- 后端：.net WCF MVC  WebAPI
+***
+
+
+```
+    step 1 : 下载    vscode:https://code.visualstudio.com/insiders/
+    根据系统环境选择 x64,x32版本
+    安装完成后，启动时会检测 GIT 是否安装
+    step 2 : 下载   git :https://git-scm.com/downloads
+    默认安装C盘，vs code打开后自动检测 git
+
+    VS Code工具启动完成
+
+    下面就是配置Git帐号和密码，操作脚本可参考 git-bash-demo.md
+
+    新电脑环境快速搭建环境说明：
+        下载安装  vscode 和  git 
+        终端执行脚本：
+        ---全局配置
+        git config --global user.name "zhangsan"
+        git config --global user.email "test@qq.com"  
+        git config --global credential.helper store 
+        ---克隆开发库到本地 
+        - git clone https://github.com/zhangsan/package.git
+
+```
+
+
+
+
+### 
+
+
+### vscode  git  clone 过程
 
 
 - step1:
@@ -16,7 +56,8 @@
 	使用VS CODE自带的初始化存储库
 	或
 	使用 ctrl+` 组合快捷键进行vs code终端执行以下脚本：
-    git clone   https://github.com/zhaochangyou/dev-docs.git
+        
+        git clone   https://github.com/zhaochangyou/dev-docs.git
     
         终端完成信息如下：
 
