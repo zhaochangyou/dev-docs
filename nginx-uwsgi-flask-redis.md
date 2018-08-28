@@ -276,7 +276,9 @@ uwsgi --connect-and-read uwsgi/uwsgi.status  #读取uwsgi实时状态
 
 other： 
 
-	ntpdate time.windows.com (微软公司授时主机(美国)) --对时  
+	ntpdate time.windows.com (微软公司授时主机(美国)) 
+	--对时  
+
 
 	
 
