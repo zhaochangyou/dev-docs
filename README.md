@@ -120,3 +120,4 @@
 - webpack打包  npm run build   文件目录： dist 
 - 服务启动  npm start   http://localhost:4200
 - 网站访问路径   http://localhost:4200/index.html
+
