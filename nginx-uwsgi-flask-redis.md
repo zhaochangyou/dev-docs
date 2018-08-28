@@ -1,11 +1,11 @@
 ### 初次学习环境准备
 
 计划运行环境：
-
+ 
 操作系统：ubuntu 
 代理服务器：Nginx
 应用服务器：uwsgi
-web 应用框架：flask
+web 应用框架：flask 
 缓存：Redis
 开发语言： python 2.7
 数据库 SqlServer
