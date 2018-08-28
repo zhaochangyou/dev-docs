@@ -274,7 +274,7 @@ uwsgi --connect-and-read uwsgi/uwsgi.status  #读取uwsgi实时状态
 # pip install uwsgitop  #实时动态查看状态 - uwsgitop
 # uwsgitop uwsgi/uwsgi.status
 
-
+--------------------------------------------------------
 # -*- coding: utf-8 -*-
 from flask import Flask, jsonify, abort, make_response
 app = Flask(__name__)
@@ -306,8 +306,65 @@ def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5632, debug=True)
-	
+------------------------------------------------
 
+from flask import request
+@app.route('/blog/api/articles', methods=['POST'])
+def create_article():
+    if not request.json or not 'title' in request.json:
+        abort(400)
+    article = {
+        'id': articles[-1]['id'] + 1,
+        'title': request.json['title'],
+        'content': request.json.get('content', '')
+    }
+    articles.append(article)
+    return jsonify({'article': article}), 201
+--------------------------------------
+$ curl -i -H "Content-Type: application/json" -X POST -d '{"title":"the way to java"}' http://localhost:5632/blog/api/articles
+HTTP/1.0 201 CREATED
+Content-Type: application/json
+Content-Length: 87
+Server: Werkzeug/0.11.4 Python/2.7.11
+Date: Wed, 17 Aug 2016 03:07:14 GMT
+{
+  "article": {
+    "content": "",
+    "id": 3,
+    "title": "the way to java"
+  }
+}
+-----------------------------------------------------
+常见 HTTP 状态码
+HTTP 状态码主要有以下几类：
+
+1xx —— 元数据
+2xx —— 正确的响应
+3xx —— 重定向
+4xx —— 客户端错误
+5xx —— 服务端错误
+常见的 HTTP 状态码可见以下表格：
+
+代码	说明
+100	Continue。客户端应当继续发送请求。
+200	OK。请求已成功，请求所希望的响应头或数据体将随此响应返回。
+201	Created。请求成功，并且服务器创建了新的资源。
+301	Moved Permanently。请求的网页已永久移动到新位置。 服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。
+302	Found。服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。
+400	Bad Request。服务器不理解请求的语法。
+401	Unauthorized。请求要求身份验证。 对于需要登录的网页，服务器可能返回此响应。
+403	Forbidden。服务器拒绝请求。
+404	Not Found。服务器找不到请求的网页。
+500	Internal Server Error。服务器遇到错误，无法完成请求。
+curl 命令参考
+选项	作用
+-X	指定 HTTP 请求方法，如 POST，GET, PUT
+-H	指定请求头，例如 Content-type:application/json
+-d	指定请求数据
+–data-binary	指定发送的文件
+-i	显示响应头部信息
+-u	指定认证用户名与密码
+-v	输出请求头部信息
 other： 
 
 	ntpdate time.windows.com (微软公司授时主机(美国)) 
